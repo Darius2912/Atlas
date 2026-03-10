@@ -1,0 +1,10 @@
+CREATE PROCEDURE DEL_PRESTAMO_PR
+    @P_Id INT
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    DELETE FROM tblPrestamo
+    WHERE Id = @P_Id;
+END;
+GO

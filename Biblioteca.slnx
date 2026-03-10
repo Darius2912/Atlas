@@ -6,8 +6,21 @@
     <Project Path="DataAccess/DataAccess.csproj" Id="4e13e5f2-d36b-4c6b-9c53-c858aaed9ad2" />
   </Folder>
   <Folder Name="/1_DataAccess/Scripts database/">
+    <File Path="spCreateLibro.sql" />
+    <File Path="spCreatePrestamo.sql" />
     <File Path="spCreateUsuario.sql" />
+    <File Path="spDelLibro.sql" />
+    <File Path="spDelPrestamo.sql" />
     <File Path="spDelUsuario.sql" />
+    <File Path="spRetAllLibros.sql" />
+    <File Path="spRetAllPrestamos.sql" />
+    <File Path="spRetAllUsuario.sql" />
+    <File Path="spRetByIdLibro.sql" />
+    <File Path="spRetByIdPrestamo.sql" />
+    <File Path="spRetByIdUsuario.sql" />
+    <File Path="spUpdLibro.sql" />
+    <File Path="spUpdPrestamo.sql" />
+    <File Path="spUpdUsuario.sql" />
     <File Path="tblLibro.sql" />
     <File Path="tblPrestamo.sql" />
     <File Path="tblUsuario.sql" />

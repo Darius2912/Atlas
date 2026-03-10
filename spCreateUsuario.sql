@@ -10,7 +10,7 @@ AS
 BEGIN
     SET NOCOUNT ON;
 
-    INSERT INTO Usuarios (Created, Name, LastName, Password, Email, BirthDate, Status, Rol)
+    INSERT INTO tblUsuario (Created, Name, LastName, Password, Email, BirthDate, Status, Rol)
     VALUES (GETDATE(), @P_Name, @P_LastName, @P_Password, @P_Email, @P_BirthDate, @P_Status, @P_Rol);
 END;
 GO

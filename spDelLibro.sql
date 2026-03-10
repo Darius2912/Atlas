@@ -1,0 +1,10 @@
+CREATE PROCEDURE DEL_LIBRO_PR
+    @P_Id INT
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    DELETE FROM tblLibro
+    WHERE Id = @P_Id;
+END;
+GO

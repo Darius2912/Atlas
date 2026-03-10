@@ -51,13 +51,222 @@ public class Program
     // Métodos de menú
     private static void MenuUsuario(UsuarioCrudFactory uc)
     {
-        // Aquí va tu CRUD de Usuario (ya lo tienes implementado)
+        bool salirUsuario = false;
+        while (!salirUsuario)
+        {
+            Console.WriteLine("\n MENU CRUD USUARIO ");
+            Console.WriteLine("1. Crear usuario");
+            Console.WriteLine("2. Actualizar usuario");
+            Console.WriteLine("3. Eliminar usuario");
+            Console.WriteLine("4. Listar todos los usuarios");
+            Console.WriteLine("5. Consultar usuario por ID");
+            Console.WriteLine("6. Volver al menú principal");
+            Console.Write("Seleccione una opción: ");
+
+            var opcion = Console.ReadLine();
+
+            switch (opcion)
+            {
+                case "1":
+                    var usuario = new Usuario();
+                    Console.WriteLine("Ingrese: Nombre, Apellido, Password, Email, FechaNacimiento (yyyy-MM-dd), Estado, Rol - separados por coma:");
+                    var uText = Console.ReadLine();
+                    var uVals = uText.Split(",");
+
+                    usuario.Name = uVals[0];
+                    usuario.LastName = uVals[1];
+                    usuario.Password = uVals[2];
+                    usuario.Email = uVals[3];
+                    usuario.BirthDate = DateTime.Parse(uVals[4]);
+                    usuario.Status = uVals[5];
+                    usuario.Rol = uVals[6];
+                    usuario.Created = DateTime.Now;
+
+                    uc.Create(usuario);
+                    Console.WriteLine("Usuario creado correctamente.");
+                    break;
+
+                case "2":
+                    Console.WriteLine("Ingrese: Id, Nombre, Apellido, Password, Email, FechaNacimiento, Estado, Rol - separados por coma:");
+                    var updText = Console.ReadLine();
+                    var updVals = updText.Split(",");
+
+                    var updUsuario = new Usuario
+                    {
+                        Id = int.Parse(updVals[0]),
+                        Name = updVals[1],
+                        LastName = updVals[2],
+                        Password = updVals[3],
+                        Email = updVals[4],
+                        BirthDate = DateTime.Parse(updVals[5]),
+                        Status = updVals[6],
+                        Rol = updVals[7],
+                        Updated = DateTime.Now
+                    };
+
+                    uc.Update(updUsuario);
+                    Console.WriteLine("Usuario actualizado correctamente.");
+                    break;
+
+                case "3":
+                    Console.Write("Ingrese el ID del usuario a eliminar: ");
+                    int idDel = int.Parse(Console.ReadLine());
+                    var usuarioToDelete = uc.RetrieveById<Usuario>(idDel);
+
+                    if (usuarioToDelete == null)
+                    {
+                        Console.WriteLine($"No se encontró un usuario con el ID {idDel}.");
+                    }
+                    else
+                    {
+                        uc.Delete(usuarioToDelete);
+                        Console.WriteLine("Usuario eliminado correctamente.");
+                    }
+                    break;
+
+                case "4":
+                    var usuarios = uc.RetrieveAll<Usuario>();
+                    Console.WriteLine("\n--- Lista de Usuarios ---");
+                    foreach (var us in usuarios)
+                    {
+                        Console.WriteLine($"ID: {us.Id}, Nombre: {us.Name} {us.LastName}, Email: {us.Email}, Estado: {us.Status}, Rol: {us.Rol}");
+                    }
+                    break;
+
+                case "5":
+                    Console.Write("Ingrese el ID del usuario a consultar: ");
+                    int idUsuario = int.Parse(Console.ReadLine());
+                    var usuarioConsultado = uc.RetrieveById<Usuario>(idUsuario);
+                    if (usuarioConsultado != null)
+                    {
+                        Console.WriteLine($"ID: {usuarioConsultado.Id}, Nombre: {usuarioConsultado.Name} {usuarioConsultado.LastName}, Email: {usuarioConsultado.Email}, Estado: {usuarioConsultado.Status}, Rol: {usuarioConsultado.Rol}");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Usuario no encontrado.");
+                    }
+                    break;
+
+                case "6":
+                    salirUsuario = true;
+                    break;
+
+                default:
+                    Console.WriteLine("Opción inválida.");
+                    break;
+            }
+        }
     }
+
 
     private static void MenuLibro(LibroCrudFactory lc)
     {
-        // Aquí va tu CRUD de Libro (ya lo tienes implementado)
+        bool salirLibro = false;
+        while (!salirLibro)
+        {
+            Console.WriteLine("\n MENU CRUD LIBRO ");
+            Console.WriteLine("1. Crear libro");
+            Console.WriteLine("2. Actualizar libro");
+            Console.WriteLine("3. Eliminar libro");
+            Console.WriteLine("4. Listar todos los libros");
+            Console.WriteLine("5. Consultar libro por ID");
+            Console.WriteLine("6. Volver al menú principal");
+            Console.Write("Seleccione una opción: ");
+
+            var opcion = Console.ReadLine();
+
+            switch (opcion)
+            {
+                case "1":
+                    var libro = new Libro();
+                    Console.WriteLine("Ingrese: ISBN, Titulo, Autor, Categoria, Copias, Disponibles - separados por coma:");
+                    var lText = Console.ReadLine();
+                    var lVals = lText.Split(",");
+
+                    libro.Isbn = lVals[0];
+                    libro.Titulo = lVals[1];
+                    libro.Autor = lVals[2];
+                    libro.Categoria = lVals[3];
+                    libro.Copias = int.Parse(lVals[4]);
+                    libro.Disponibles = int.Parse(lVals[5]);
+                    libro.Created = DateTime.Now;
+
+                    lc.Create(libro);
+                    Console.WriteLine("Libro creado correctamente.");
+                    break;
+
+                case "2":
+                    Console.WriteLine("Ingrese: Id, ISBN, Titulo, Autor, Categoria, Copias, Disponibles - separados por coma:");
+                    var updText = Console.ReadLine();
+                    var updVals = updText.Split(",");
+
+                    var updLibro = new Libro
+                    {
+                        Id = int.Parse(updVals[0]),
+                        Isbn = updVals[1],
+                        Titulo = updVals[2],
+                        Autor = updVals[3],
+                        Categoria = updVals[4],
+                        Copias = int.Parse(updVals[5]),
+                        Disponibles = int.Parse(updVals[6]),
+                        Updated = DateTime.Now
+                    };
+
+                    lc.Update(updLibro);
+                    Console.WriteLine("Libro actualizado correctamente.");
+                    break;
+
+                case "3":
+                    Console.Write("Ingrese el ID del libro a eliminar: ");
+                    int idDel = int.Parse(Console.ReadLine());
+                    var libroToDelete = lc.RetrieveById<Libro>(idDel);
+
+                    if (libroToDelete == null)
+                    {
+                        Console.WriteLine($"No se encontró un libro con el ID {idDel}.");
+                    }
+                    else
+                    {
+                        lc.Delete(libroToDelete);
+                        Console.WriteLine("Libro eliminado correctamente.");
+                    }
+                    break;
+
+                case "4":
+                    var libros = lc.RetrieveAll<Libro>();
+                    Console.WriteLine("\n--- Lista de Libros ---");
+                    foreach (var lb in libros)
+                    {
+                        Console.WriteLine($"ID: {lb.Id}, ISBN: {lb.Isbn}, Titulo: {lb.Titulo}, Autor: {lb.Autor}, Categoria: {lb.Categoria}, Copias: {lb.Copias}, Disponibles: {lb.Disponibles}");
+                    }
+                    break;
+
+                case "5":
+                    Console.Write("Ingrese el ID del libro a consultar: ");
+                    int idLibro = int.Parse(Console.ReadLine());
+                    var libroConsultado = lc.RetrieveById<Libro>(idLibro);
+                    if (libroConsultado != null)
+                    {
+                        Console.WriteLine($"ID: {libroConsultado.Id}, ISBN: {libroConsultado.Isbn}, Titulo: {libroConsultado.Titulo}, Autor: {libroConsultado.Autor}, Categoria: {libroConsultado.Categoria}, Copias: {libroConsultado.Copias}, Disponibles: {libroConsultado.Disponibles}");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Libro no encontrado.");
+                    }
+                    break;
+
+                case "6":
+                    salirLibro = true;
+                    break;
+
+                default:
+                    Console.WriteLine("Opción inválida.");
+                    break;
+            }
+        }
     }
+
+
 
     private static void MenuPrestamo(PrestamoCrudFactory pc)
     {
