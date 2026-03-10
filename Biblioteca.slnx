@@ -2,4 +2,17 @@
   <Folder Name="/0_Entities-DTOs/">
     <Project Path="Entities-DTOs/Entities-DTOs.csproj" />
   </Folder>
+  <Folder Name="/1_DataAccess/">
+    <Project Path="DataAccess/DataAccess.csproj" Id="4e13e5f2-d36b-4c6b-9c53-c858aaed9ad2" />
+  </Folder>
+  <Folder Name="/1_DataAccess/Scripts database/">
+    <File Path="spCreateUsuario.sql" />
+    <File Path="spDelUsuario.sql" />
+    <File Path="tblLibro.sql" />
+    <File Path="tblPrestamo.sql" />
+    <File Path="tblUsuario.sql" />
+  </Folder>
+  <Folder Name="/99_DevTester/">
+    <Project Path="ConsoleApp-DevTesting/ConsoleApp-DevTesting.csproj" Id="0797331d-b5ba-41f5-b85e-1722d32e66b4" />
+  </Folder>
 </Solution>

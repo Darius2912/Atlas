@@ -6,12 +6,14 @@ namespace Entities_DTOs
 {
     internal class Prestamo : BaseDTO
     {
-        public string Isbn { get; set; }              // Identificador del libro
-        public int UsuarioId { get; set; }            // Identificador del usuario (int para BD)
-
-        public DateTime FechaPrestamo { get; set; }   // Inicio del préstamo
-        public DateTime FechaLimite { get; set; }     // Fecha límite de devolución
-        public DateTime? FechaDevolucion { get; set; } // Fecha real de devolución (nullable)
-        public string Estado { get; set; }            // "prestado" / "devuelto"
+        public string Isbn { get; set; }           
+        public int UsuarioId { get; set; }      
+        public DateTime FechaPrestamo { get; set; } 
+        public DateTime FechaLimite { get; set; }     
+        public DateTime FechaDevolucion { get; set; } 
+        public string Estado { get; set; }            
+        public DateTime created { get; set; }
+        
     }
 }
+

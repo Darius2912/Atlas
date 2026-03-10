@@ -16,5 +16,6 @@ namespace Entities_DTOs
         public string Categoria { get; set; }
         public int Copias { get; set; }
         public int Disponibles { get; set; }    
+        public DateTime created { get; set; }
     }
 }
