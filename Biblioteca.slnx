@@ -25,6 +25,12 @@
     <File Path="tblPrestamo.sql" />
     <File Path="tblUsuario.sql" />
   </Folder>
+  <Folder Name="/2_AppCore/">
+    <Project Path="AppCore/AppCore.csproj" Id="28d36824-2dc7-4165-8eb5-c878a11e9304" />
+  </Folder>
+  <Folder Name="/4_WebAPI/">
+    <Project Path="WebAPI/WebAPI.csproj" Id="a90029cd-e526-40d4-b27d-4b1868cba143" />
+  </Folder>
   <Folder Name="/99_DevTester/">
     <Project Path="ConsoleApp-DevTesting/ConsoleApp-DevTesting.csproj" Id="0797331d-b5ba-41f5-b85e-1722d32e66b4" />
   </Folder>
